@@ -92,8 +92,8 @@ class LeagueStatistics
     end
 
     home_team_average_goals = Hash.new(0)
-    home_team_games.each do |team_id, games|
-      home_team_average_goals[team_id] = ((home_team_goals[team_id]/games).to_f).round(2)
+    home_team_games.each do |team_id, games_count|
+      home_team_average_goals[team_id] = ((home_team_goals[team_id].to_f/games_count)).round(2)
     end
 
     home_team_average_goals
@@ -104,6 +104,7 @@ class LeagueStatistics
 
     highest_scoring_home_team = teams.find { |team| team.team_id == highest_scoring_home_team_id  }
     highest_scoring_home_team.teamname
+
   end
 
   def lowest_scoring_home_team
