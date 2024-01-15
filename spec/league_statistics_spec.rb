@@ -56,7 +56,13 @@ RSpec.describe LeagueStatistics do
 
   describe '#average_scoring_home_team' do
     it 'returns the hash where each team_id is associated with its average scoring' do
-      expect(league_stats.average_scoring_home_team).to eq({6=>3.0, 16=>1.0})
+      expect(league_stats.average_scoring_home_team).to eq({6=>3.0, 16=>1.5})
+    end
+  end
+
+  describe '#average_scoring_visitor' do
+    it 'returns the hash where each team_id is associated with its average scoring' do
+      expect(league_stats.average_scoring_visitor).to eq({3=>2.0, 17=>1.5})
     end
   end
 end

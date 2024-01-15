@@ -64,20 +64,23 @@ class LeagueStatistics
     worst_team.teamname
   end
 
-  def highest_scoring_visitor
-    away_teams = @game_teams.select { |game_team| game_team.hoa == 'away' }
-    highest_scorer = away_teams.max_by { |game_team| game_team.goals.to_i }
+  def average_scoring_visitor
+    visitor_goals = Hash.new(0)
+    visitor_games = Hash.new(0)
 
-    best_team = @teams.find { |team| team.team_id == highest_scorer.team_id }
-    best_team.teamname
-  end
+    game_teams.each do |game_team|
+      if game_team.hoa == "away"
+        visitor_goals[game_team.team_id] += game_team.goals
+        visitor_games[game_team.team_id] += 1
+      end
+    end
 
-  def lowest_scoring_visitor
-    away_teams = @game_teams.select { |game_team| game_team.hoa == 'away' }
-    lowest_scorer = away_teams.min_by { |game_team| game_team.goals.to_i }
+    visitor_average_goals = Hash.new(0)
+    visitor_games.each do |team_id, games_count|
+      visitor_average_goals[team_id] = ((visitor_goals[team_id].to_f/games_count)).round(2)
+    end
 
-    worst_team = @teams.find { |team| team.team_id == lowest_scorer.team_id }
-    worst_team.teamname
+    visitor_average_goals
   end
 
   def average_scoring_home_team
@@ -114,4 +117,18 @@ class LeagueStatistics
     lowest_scoring_home_team.teamname
   end
 
+  def highest_scoring_visitor
+    highest_scoring_visitor_id = average_scoring_visitor.max_by {|_, goals| goals }.first
+
+    highest_scoring_visitor = teams.find { |team| team.team_id == highest_scoring_visitor_id  }
+    highest_scoring_visitor.teamname
+
+  end
+
+  def lowest_scoring_visitor
+    lowest_scoring_visitor_id = average_scoring_visitor.min_by {|_, goals| goals }.first
+
+    lowest_scoring_visitor = teams.find { |team| team.team_id == lowest_scoring_visitor_id  }
+    lowest_scoring_visitor.teamname
+  end
 end
