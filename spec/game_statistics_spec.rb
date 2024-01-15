@@ -69,7 +69,7 @@ RSpec.describe GameStatistics do
             ]
             game_stats = GameStatistics.new(games)
 
-            expect(game_stats.percentage_home_wins).to eq(50.0)
+            expect(game_stats.percentage_home_wins).to eq(0.5)
         end
     end
 
@@ -83,7 +83,7 @@ RSpec.describe GameStatistics do
             ]
             game_stats = GameStatistics.new(games)
 
-            expect(game_stats.percentage_away_wins).to eq(50.0)
+            expect(game_stats.percentage_away_wins).to eq(0.5)
         end
     end
     describe '#percentage_ties' do
@@ -140,5 +140,5 @@ RSpec.describe GameStatistics do
 
             expect(game_stats.average_goals_by_season).to eq({20122013=>4.5})
         end
-    end           
+    end
 end
