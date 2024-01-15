@@ -36,7 +36,7 @@ class StatTracker
     @game_statistics.percentage_home_wins
   end
 
-  def percentage_away_wins
+  def percentage_visitor_wins
     @game_statistics.percentage_away_wins
   end
 
