@@ -110,7 +110,7 @@ RSpec.describe GameStatistics do
             ]
             game_stats = GameStatistics.new(games)
 
-            expect(game_stats.count_of_games_by_season).to eq({20122013=>4})
+            expect(game_stats.count_of_games_by_season).to eq({"20122013"=>4})
         end
     end
 

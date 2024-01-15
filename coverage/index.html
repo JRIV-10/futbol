@@ -14,7 +14,7 @@
       <img src="./assets/0.12.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2024-01-14T21:25:21-08:00">2024-01-14T21:25:21-08:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2024-01-14T21:37:20-08:00">2024-01-14T21:37:20-08:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -1097,7 +1097,7 @@
 
             
 
-            <code class="ruby">      count_by_season[game.season] += 1</code>
+            <code class="ruby">      count_by_season[game.season.to_s] += 1</code>
           </li>
         </div>
       
@@ -5126,7 +5126,7 @@
 
             
 
-            <code class="ruby">  def percentage_away_wins</code>
+            <code class="ruby">  def percentage_visitor_wins</code>
           </li>
         </div>
       
@@ -7355,7 +7355,7 @@
 
             
 
-            <code class="ruby">            expect(game_stats.count_of_games_by_season).to eq({20122013=&gt;4})</code>
+            <code class="ruby">            expect(game_stats.count_of_games_by_season).to eq({&quot;20122013&quot;=&gt;4})</code>
           </li>
         </div>
       
