@@ -52,7 +52,7 @@ class SeasonStatistics
   end
 
   def calculate_win_percentage(season)
-    season_game_ids = games.find_all { |game| game.season == season }
+    season_game_ids = games.find_all { |game| game.season == season.to_i }
       .map{ |game| game.game_id }
 
     games_by_coach = game_teams
@@ -72,7 +72,7 @@ class SeasonStatistics
 
   def calculate_accurate_shots_pct(season)
     season_game_ids = games
-      .find_all { |game| game.season == season }
+      .find_all { |game| game.season == season.to_i }
       .map{ |game| game.game_id }
 
     team_games = game_teams
@@ -94,6 +94,7 @@ class SeasonStatistics
 
   def most_accurate_team(season)
     team_accurate_shots_pct = calculate_accurate_shots_pct(season)
+
     most_accurate_team_id = team_accurate_shots_pct.max_by { |_,accurate_shots_pct| accurate_shots_pct }.first
     most_accurate_team = teams.find { |team| team.team_id == most_accurate_team_id }
     most_accurate_team.teamname
@@ -108,7 +109,7 @@ class SeasonStatistics
 
   def tackles_by_teams(season)
     season_game_ids = games
-      .find_all { |game| game.season == season }
+      .find_all { |game| game.season == season.to_i }
       .map{ |game| game.game_id }
 
     team_games = game_teams
