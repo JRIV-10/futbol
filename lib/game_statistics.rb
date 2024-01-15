@@ -75,7 +75,7 @@ class GameStatistics
     stats = Hash.new { |hash, key| hash[key] = { total_goals: 0, game_count: 0 } }
 
     @games.each do |game|
-      season = game.season
+      season = game.season.to_s
       total_goals = game.away_goals + game.home_goals
 
       stats[season][:total_goals] += total_goals

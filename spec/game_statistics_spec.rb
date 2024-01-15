@@ -138,7 +138,7 @@ RSpec.describe GameStatistics do
             ]
             game_stats = GameStatistics.new(games)
 
-            expect(game_stats.average_goals_by_season).to eq({20122013=>4.5})
+            expect(game_stats.average_goals_by_season).to eq({"20122013"=>4.5})
         end
     end
 end
